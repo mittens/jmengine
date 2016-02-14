@@ -1,0 +1,26 @@
+{
+  project : {
+    name : "JMEngine Sandbox",
+    version : "0.0.1",
+    author : "Trent Polack",
+
+    app : {
+      name : "BabylonHx",
+      package : "com.jmengine.sandbox",
+      main : "Main",
+	  output: 'bin_snow/'
+    },
+
+    build : {
+      dependencies : {
+        "snow" : "*",
+		"poly2trihx" : "*"
+      }
+    },
+
+    files : {
+      config : "config.json",
+      assets : "assets/"
+    }
+  }
+}
