@@ -7,7 +7,6 @@
 //----------------------------------------------------------------------------------------------------
 package demos;
 
-import lib.com.babylonhx.materials.MaterialDefines;
 import lib.com.babylonhx.lights.IShadowLight;
 import lib.com.babylonhx.lights.shadows.ShadowGenerator;
 import lib.com.babylonhx.cameras.ArcRotateCamera;
