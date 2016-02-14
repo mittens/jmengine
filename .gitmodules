@@ -1,3 +1,6 @@
 [submodule "lib"]
 	path = lib
 	url = https://github.com/mittens/BabylonHx.git
+[submodule "gui/statsjs"]
+	path = gui/statsjs
+	url = https://github.com/mittens/stats.js.git
