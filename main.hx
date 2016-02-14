@@ -1,5 +1,7 @@
 package;
 
+import js.Browser;
+
 import snow.system.window.Window;
 import snow.types.Types;
 
@@ -8,12 +10,14 @@ import lib.com.babylonhx.Scene;
 
 class Main extends snow.App
 {
-	var engine:Engine;
-	var scene:Scene;
+	var engine  :  Engine;
+	var scene  :  Scene;
 
-	override function config( config:AppConfig ):AppConfig
+	override function config( config : AppConfig ) : AppConfig
 	{
-		config.window.title = 'jmcore';
+		config.window.title = 'Joy Machine Engine (WebGL)';
+		config.window.width = Browser.window.innerWidth;
+		config.window.height = Browser.window.innerHeight;
 
 		return config;
 	}
@@ -23,10 +27,21 @@ class Main extends snow.App
 		engine = new Engine( SnowApp._snow.window );
 		scene = new Scene( engine );
 
+		// Core demo setup.
+		var demo = new demos.Demo( scene );
+
+		// Various demo modules.
+		var terrain = new demos.Terrain( scene );
+
+		// Render loop.
+		scene.getEngine( ).runRenderLoop( function( )
+										  {
+											  scene.render( );
+										  } );
 		app.window.onrender = render;
 	}
 
-	override function onmousedown( x:Int, y:Int, button:Int, timestamp:Float, window_id:Int )
+	override function onmousedown( x  :  Int, y  :  Int, button  :  Int, timestamp  :  Float, window_id  :  Int )
 	{
 		for( f in Engine.mouseDown )
 		{
@@ -34,7 +49,7 @@ class Main extends snow.App
 		}
 	}
 
-	override function onmouseup( x:Int, y:Int, button:Int, timestamp:Float, window_id:Int )
+	override function onmouseup( x  :  Int, y  :  Int, button  :  Int, timestamp  :  Float, window_id  :  Int )
 	{
 		for( f in Engine.mouseUp )
 		{
@@ -42,7 +57,7 @@ class Main extends snow.App
 		}
 	}
 
-	override function onmousemove( x:Int, y:Int, xrel:Int, yrel:Int, timestamp:Float, window_id:Int )
+	override function onmousemove( x  :  Int, y  :  Int, xrel  :  Int, yrel  :  Int, timestamp  :  Float, window_id  :  Int )
 	{
 		for( f in Engine.mouseMove )
 		{
@@ -50,7 +65,7 @@ class Main extends snow.App
 		}
 	}
 
-	override function onmousewheel( x:Int, y:Int, timestamp:Float, window_id:Int )
+	override function onmousewheel( x  :  Int, y  :  Int, timestamp  :  Float, window_id  :  Int )
 	{
 		for( f in Engine.mouseWheel )
 		{
@@ -58,7 +73,7 @@ class Main extends snow.App
 		}
 	}
 
-	override function ontouchdown( x:Float, y:Float, touch_id:Int, timestamp:Float )
+	override function ontouchdown( x  :  Float, y  :  Float, touch_id  :  Int, timestamp  :  Float )
 	{
 		for( f in Engine.touchDown )
 		{
@@ -66,7 +81,7 @@ class Main extends snow.App
 		}
 	}
 
-	override function ontouchup( x:Float, y:Float, touch_id:Int, timestamp:Float )
+	override function ontouchup( x  :  Float, y  :  Float, touch_id  :  Int, timestamp  :  Float )
 	{
 		for( f in Engine.touchUp )
 		{
@@ -74,7 +89,7 @@ class Main extends snow.App
 		}
 	}
 
-	override function ontouchmove( x:Float, y:Float, dx:Float, dy:Float, touch_id:Int, timestamp:Float )
+	override function ontouchmove( x  :  Float, y  :  Float, dx  :  Float, dy  :  Float, touch_id  :  Int, timestamp  :  Float )
 	{
 		for( f in Engine.touchMove )
 		{
@@ -82,7 +97,7 @@ class Main extends snow.App
 		}
 	}
 
-	override function onkeyup( keycode:Int, scancode:Int, repeat:Bool, mod:ModState, timestamp:Float, window_id:Int )
+	override function onkeyup( keycode : Int, scancode : Int, repeat : Bool, mod : ModState, timestamp : Float, window_id : Int )
 	{
 		if( keycode == Key.escape )
 		{
@@ -95,7 +110,7 @@ class Main extends snow.App
 		}
 	}
 
-	override function onkeydown( keycode:Int, scancode:Int, repeat:Bool, mod:ModState, timestamp:Float, window_id:Int )
+	override function onkeydown( keycode : Int, scancode : Int, repeat : Bool, mod : ModState, timestamp : Float, window_id : Int )
 	{
 		for( f in Engine.keyDown )
 		{
@@ -103,7 +118,7 @@ class Main extends snow.App
 		}
 	}
 
-	function render( window:Window )
+	function render( window : Window )
 	{
 		engine._renderLoop( );
 	}

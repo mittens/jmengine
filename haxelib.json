@@ -1,32 +1,32 @@
 {
-  "name": "BabylonHx",
+  "name": "Joy Machine Engine (WebGL)",
   "license": "Apache License 2.0",
   "url": "https://github.com/mittens/BabylonHx",
-  "description": "BabylonHx is an ultra-portable lightweight 3D engine. It is a port of the excellent BabylonJS 3D engine to the Haxe programming language.",
+  "description": "Joy Machine's WebGL engine, based on BabylonHx (which is based on BabylonJS).",
   "releasenote": "",
   "version": "0.1",
   "contributors": [
-    "vujadin",
-    "mittens"
+	"vujadin",
+	"mittens"
   ],
   "tags": [
-    "cpp",
-    "html5",
-    "web",
-    "webgl",
-    "snow",
-    "lime",
-    "openfl",
-    "nme",
-    "opengl",
-    "android",
-    "ios",
-    "mac",
-    "windows",
-    "linux",
-    "native"
+	"cpp",
+	"html5",
+	"web",
+	"webgl",
+	"snow",
+	"lime",
+	"openfl",
+	"nme",
+	"opengl",
+	"android",
+	"ios",
+	"mac",
+	"windows",
+	"linux",
+	"native"
   ],
   "dependencies": {
-    "poly2trihx": ""
+	"poly2trihx": ""
   }
 }

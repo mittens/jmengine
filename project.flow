@@ -5,10 +5,10 @@
     author : "Trent Polack",
 
     app : {
-      name : "BabylonHx",
+      name : "jmengine_webgl",
       package : "com.jmengine.sandbox",
       main : "Main",
-	  output: 'bin_snow/'
+	  output: 'build/'
     },
 
     build : {
