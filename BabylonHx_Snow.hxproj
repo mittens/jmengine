@@ -19,6 +19,8 @@
     <class path="C:\HaxeToolkit\haxe\lib\snow\git" />
     <class path="C:\HaxeToolkit\haxe-3.2.0\lib\poly2trihx\0,1,4" />
     <class path="C:\HaxeToolkit\haxe-3.2.0\lib\hxcpp\3,2,102" />
+    <class path="C:\HaxeToolkit\haxe-3.2.0\lib\stats,js,hx\0,0,3" />
+    <class path="lib\src" />
     <class path="src" />
     <class path="bin_snow\windows.build\haxe" />
   </classpaths>
@@ -39,7 +41,7 @@
   <compileTargets>
     <compile path="Main.hx" />
   </compileTargets>
-  <!-- Paths to exclude from the Project Explorer tree -->
+  <!-- Paths to exclude from the Project Explorer tbinree -->
   <hiddenPaths>
     <hidden path="obj" />
   </hiddenPaths>

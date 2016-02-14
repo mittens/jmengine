@@ -1,7 +1,7 @@
 {
   "name": "Joy Machine Engine (WebGL)",
   "license": "Apache License 2.0",
-  "url": "https://github.com/mittens/BabylonHx",
+  "url": "https://github.com/mittens/jmengine",
   "description": "Joy Machine's WebGL engine, based on BabylonHx (which is based on BabylonJS).",
   "releasenote": "",
   "version": "0.1",
@@ -27,6 +27,7 @@
 	"native"
   ],
   "dependencies": {
-	"poly2trihx": ""
+	"poly2trihx": "",
+	"stats.js.hx": ""
   }
 }

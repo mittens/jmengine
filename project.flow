@@ -14,8 +14,9 @@
     build : {
       dependencies : {
         "snow" : "*",
-		"poly2trihx" : "*"
-      }
+		"poly2trihx" : "*",
+		"stats.js.hx" : "*"
+		}
     },
 
     files : {

@@ -2,6 +2,8 @@ package;
 
 import js.Browser;
 
+import js.stats.Stats;
+
 import snow.system.window.Window;
 import snow.types.Types;
 
@@ -10,14 +12,25 @@ import lib.com.babylonhx.Scene;
 
 class Main extends snow.App
 {
-	var engine  :  Engine;
-	var scene  :  Scene;
+	var engine : Engine;
+	var scene : Scene;
+
+	var stats : Stats;
 
 	override function config( config : AppConfig ) : AppConfig
 	{
 		config.window.title = 'Joy Machine Engine (WebGL)';
 		config.window.width = Browser.window.innerWidth;
 		config.window.height = Browser.window.innerHeight;
+
+		// Setup stats.
+		stats = new Stats( );
+		stats.setMode( 0 );		// FPS.
+
+		// Align top-left.
+		stats.domElement.style.position = 'absolute';
+		stats.domElement.style.left = '0px';
+		stats.domElement.style.top = '0px';
 
 		return config;
 	}
@@ -39,6 +52,8 @@ class Main extends snow.App
 											  scene.render( );
 										  } );
 		app.window.onrender = render;
+
+		js.Browser.document.body.appendChild( stats.domElement );
 	}
 
 	override function onmousedown( x  :  Int, y  :  Int, button  :  Int, timestamp  :  Float, window_id  :  Int )
@@ -120,6 +135,15 @@ class Main extends snow.App
 
 	function render( window : Window )
 	{
+		// Start stats.
+		stats.begin( );
+
 		engine._renderLoop( );
+
+		// End stats.
+		stats.end( );
+
+		// Update stats.
+		stats.update( );
 	}
 }
