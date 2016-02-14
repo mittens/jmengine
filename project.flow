@@ -5,7 +5,7 @@
     author : "Trent Polack",
 
     app : {
-      name : "Joy Machine Engine (WebGL)",
+      name : "jmengine_webgl",
       package : "com.jmengine.sandbox",
       main : "Main",
 	  output: 'build/'

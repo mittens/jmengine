@@ -1,5 +1,7 @@
 package;
 
+import js.Browser;
+
 import snow.system.window.Window;
 import snow.types.Types;
 
@@ -14,6 +16,8 @@ class Main extends snow.App
 	override function config( config : AppConfig ) : AppConfig
 	{
 		config.window.title = 'Joy Machine Engine (WebGL)';
+		config.window.width = Browser.window.innerWidth;
+		config.window.height = Browser.window.innerHeight;
 
 		return config;
 	}
