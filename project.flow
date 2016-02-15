@@ -1,27 +1,32 @@
 {
-  project : {
-    name : "JMEngine Sandbox",
-    version : "0.0.1",
-    author : "Trent Polack",
+	project :
+	{
+		name : "JMEngine Sandbox",
+		version : "0.0.2",
+		author : "Trent Polack",
 
-    app : {
-      name : "jmengine_webgl",
-      package : "com.jmengine.sandbox",
-      main : "Main",
-	  output: 'build/'
-    },
+		app :
+		{
+	  		name : "jmengine_webgl",
+			package : "com.jmengine.sandbox",
+			main : "Main",
+			output: 'build/'
+		},
 
-    build : {
-      dependencies : {
-        "snow" : "*",
-		"poly2trihx" : "*",
-		"stats.js.hx" : "*"
+		build :
+		{
+			dependencies :
+			{
+				"snow" : "*",
+				"poly2trihx" : "*",
+				"stats.js.hx" : "*"
+			}
+		},
+
+		files :
+		{
+			config : "config.json",
+			assets : "assets/"
 		}
-    },
-
-    files : {
-      config : "config.json",
-      assets : "assets/"
-    }
-  }
+	}
 }

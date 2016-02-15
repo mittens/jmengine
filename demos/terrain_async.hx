@@ -1,9 +1,9 @@
 //----------------------------------------------------------------------------------------------------
-// terrain.hx
-//	Author: trent (2/13/16)
-//	Modified: trent (2/14/16)
+// terrain_async.hx
+//	Author: trent (2/14/16)
+//	Modified:
 //
-// Simple terrain sample demo.
+// Simple terrain sample demo (using asynchronous asset loading).
 //----------------------------------------------------------------------------------------------------
 package demos;
 
@@ -15,8 +15,8 @@ import lib.com.babylonhx.mesh.Mesh;
 import lib.com.babylonhx.Scene;
 
 //----------------------------------------------------------------------------------------------------
-// Terrain Class Definition.
-class Terrain
+// TerrainAsync Class Definition.
+class TerrainAsync
 {
 	//------------------------------------------------------------------------------------------------
 	public function new( scene : Scene )
@@ -35,4 +35,7 @@ class Terrain
 
 		scene.addMesh( ground );
 	}
+
+	//------------------------------------------------------------------------------------------------
+	private function _
 }

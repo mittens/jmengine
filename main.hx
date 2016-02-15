@@ -1,117 +1,103 @@
+//----------------------------------------------------------------------------------------------------
+// main.hx
+//	Author: trent (2/14/16)
+//	Modified:
+//
+// Main app entry point.
+//----------------------------------------------------------------------------------------------------
 package;
 
 import js.Browser;
 
-import js.stats.Stats;
-
 import snow.system.window.Window;
 import snow.types.Types;
+import snow.App;
 
 import lib.com.babylonhx.Engine;
-import lib.com.babylonhx.Scene;
 
+import jmengine.JMEngine;
+
+import jmengine.app.EntryPoint;
+
+import demos.Demo;
+import demos.Terrain;
+
+//------------------------------------------------------------------------------------------------
+// Main class definition.
 class Main extends snow.App
 {
-	var engine : Engine;
-	var scene : Scene;
+	var entryPoint : EntryPoint = new EntryPoint( );
 
-	var stats : Stats;
-
-	override function config( config : AppConfig ) : AppConfig
+	//------------------------------------------------------------------------------------------------
+	override function config( config : AppConfig )
 	{
 		config.window.title = 'Joy Machine Engine (WebGL)';
 		config.window.width = Browser.window.innerWidth;
 		config.window.height = Browser.window.innerHeight;
 
-		// Setup stats.
-		stats = new Stats( );
-		stats.setMode( 0 );		// FPS.
-
-		// Align top-left.
-		stats.domElement.style.position = 'absolute';
-		stats.domElement.style.left = '0px';
-		stats.domElement.style.top = '0px';
-
 		return config;
 	}
 
+	//------------------------------------------------------------------------------------------------
 	override function ready( )
 	{
-		engine = new Engine( SnowApp._snow.window );
-		scene = new Scene( engine );
+		super.ready( );
+
+		entryPoint.jmengine.engine = new Engine( SnowApp._snow.window );
+
+		entryPoint.ready( );
+		app.window.onrender = entryPoint.render;
 
 		// Core demo setup.
-		var demo = new demos.Demo( scene );
+		var demo = new Demo( entryPoint.jmengine.scene );
 
 		// Various demo modules.
-		var terrain = new demos.Terrain( scene );
-
-		// Render loop.
-		scene.getEngine( ).runRenderLoop( function( )
-										  {
-											  scene.render( );
-										  } );
-		app.window.onrender = render;
-
-		js.Browser.document.body.appendChild( stats.domElement );
+		var terrain = new Terrain( entryPoint.jmengine.scene );
 	}
 
-	override function onmousedown( x  :  Int, y  :  Int, button  :  Int, timestamp  :  Float, window_id  :  Int )
+	//------------------------------------------------------------------------------------------------
+	override function onmousedown( x : Int, y : Int, button : Int, timestamp : Float, window_id : Int )
 	{
-		for( f in Engine.mouseDown )
-		{
-			f( x, y, button );
-		}
+		entryPoint.onmousedown( x, y, button, timestamp, window_id );
 	}
 
-	override function onmouseup( x  :  Int, y  :  Int, button  :  Int, timestamp  :  Float, window_id  :  Int )
+	//------------------------------------------------------------------------------------------------
+	override function onmouseup( x : Int, y : Int, button : Int, timestamp : Float, window_id : Int )
 	{
-		for( f in Engine.mouseUp )
-		{
-			f( x, y, button );
-		}
+		entryPoint.onmouseup( x, y, button, timestamp, window_id );
 	}
 
-	override function onmousemove( x  :  Int, y  :  Int, xrel  :  Int, yrel  :  Int, timestamp  :  Float, window_id  :  Int )
+	//------------------------------------------------------------------------------------------------
+	override function onmousemove( x : Int, y : Int, xrel : Int, yrel : Int, timestamp : Float, window_id : Int )
 	{
-		for( f in Engine.mouseMove )
-		{
-			f( x, y );
-		}
+		entryPoint.onmousemove( x, y, xrel, yrel, timestamp, window_id );
 	}
 
-	override function onmousewheel( x  :  Int, y  :  Int, timestamp  :  Float, window_id  :  Int )
+	//------------------------------------------------------------------------------------------------
+	override function onmousewheel( x : Int, y : Int, timestamp : Float, window_id : Int )
 	{
-		for( f in Engine.mouseWheel )
-		{
-			f( y );
-		}
+		entryPoint.onmousewheel( x, y, timestamp, window_id );
 	}
 
-	override function ontouchdown( x  :  Float, y  :  Float, touch_id  :  Int, timestamp  :  Float )
+	//------------------------------------------------------------------------------------------------
+	override function ontouchdown( x : Float, y : Float, touch_id : Int, timestamp : Float )
 	{
-		for( f in Engine.touchDown )
-		{
-			f( x, y, touch_id, timestamp );
-		}
+		entryPoint.ontouchdown( x, y, touch_id, timestamp );
 	}
 
-	override function ontouchup( x  :  Float, y  :  Float, touch_id  :  Int, timestamp  :  Float )
+	//------------------------------------------------------------------------------------------------
+	override function ontouchup( x : Float, y : Float, touch_id : Int, timestamp : Float )
 	{
-		for( f in Engine.touchUp )
-		{
-			f( x, y, touch_id, timestamp );
-		}
+		entryPoint.ontouchup( x, y, touch_id, timestamp );
 	}
 
-	override function ontouchmove( x  :  Float, y  :  Float, dx  :  Float, dy  :  Float, touch_id  :  Int, timestamp  :  Float )
+	//------------------------------------------------------------------------------------------------
+	override function ontouchmove( x : Float, y : Float, dx : Float, dy : Float, touch_id : Int, timestamp : Float )
 	{
-		for( f in Engine.touchMove )
-		{
-			f( x, y, dx, dy, touch_id, timestamp );
-		}
+		entryPoint.ontouchmove( x, y, dx, dy, touch_id, timestamp );
 	}
 
+	//------------------------------------------------------------------------------------------------
 	override function onkeyup( keycode : Int, scancode : Int, repeat : Bool, mod : ModState, timestamp : Float, window_id : Int )
 	{
 		if( keycode == Key.escape )
@@ -119,31 +105,12 @@ class Main extends snow.App
 			app.shutdown( );
 		}
 
-		for( f in Engine.keyUp )
-		{
-			f( keycode );
-		}
+		entryPoint.onkeyup( keycode, scancode, repeat, mod, timestamp, window_id );
 	}
 
+	//------------------------------------------------------------------------------------------------
 	override function onkeydown( keycode : Int, scancode : Int, repeat : Bool, mod : ModState, timestamp : Float, window_id : Int )
 	{
-		for( f in Engine.keyDown )
-		{
-			f( keycode );
-		}
-	}
-
-	function render( window : Window )
-	{
-		// Start stats.
-		stats.begin( );
-
-		engine._renderLoop( );
-
-		// End stats.
-		stats.end( );
-
-		// Update stats.
-		stats.update( );
+		entryPoint.onkeydown( keycode, scancode, repeat, mod, timestamp, window_id );
 	}
 }

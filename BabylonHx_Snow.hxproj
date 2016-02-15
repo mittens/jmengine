@@ -21,7 +21,7 @@
     <class path="C:\HaxeToolkit\haxe-3.2.0\lib\hxcpp\3,2,102" />
     <class path="C:\HaxeToolkit\haxe-3.2.0\lib\stats,js,hx\0,0,3" />
     <class path="lib\src" />
-    <class path="src" />
+    <class path="jmengine" />
     <class path="bin_snow\windows.build\haxe" />
   </classpaths>
   <!-- Build options -->

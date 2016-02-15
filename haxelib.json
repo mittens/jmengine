@@ -4,20 +4,16 @@
   "url": "https://github.com/mittens/jmengine",
   "description": "Joy Machine's WebGL engine, based on BabylonHx (which is based on BabylonJS).",
   "releasenote": "",
-  "version": "0.1",
+  "version": "0.0.2",
   "contributors": [
 	"vujadin",
 	"mittens"
   ],
   "tags": [
-	"cpp",
 	"html5",
 	"web",
 	"webgl",
 	"snow",
-	"lime",
-	"openfl",
-	"nme",
 	"opengl",
 	"android",
 	"ios",

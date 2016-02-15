@@ -5,25 +5,11 @@
 //
 // Asset manager (singleton) for JMEngine for loading files asynchronously.
 //----------------------------------------------------------------------------------------------------
-package com.jmengine.assetmanager;
+package jmengine.assetmanager;
 
 import lib.com.babylonhx.materials.textures.BaseTexture;
 
 import lib.com.babylonhx.Scene;
-
-//----------------------------------------------------------------------------------------------------
-// Rseource Structure Definition;
-typedef Resource< T > =
-{
-	var resource : T;
-
-	var path : String;
-
-	var isLoading : Bool = false;
-	var loadingProgress : Float = 0.0;
-
-	var _callback : Void -> Void;
-}
 
 //----------------------------------------------------------------------------------------------------
 class AssetManager
