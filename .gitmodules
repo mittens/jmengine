@@ -1,6 +1,6 @@
 [submodule "lib"]
 	path = lib
 	url = https://github.com/mittens/BabylonHx.git
-[submodule "gui/mint"]
-	path = gui/mint
-	url = https://github.com/mittens/mint.git
+[submodule "gui/twojs"]
+	path = gui/twojs
+	url = https://github.com/jonobr1/two.js.git
