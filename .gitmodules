@@ -4,3 +4,6 @@
 [submodule "gui/twojs"]
 	path = gui/twojs
 	url = https://github.com/jonobr1/two.js.git
+[submodule "gui/twojsHx"]
+	path = gui/twojsHx
+	url = https://github.com/mittens/twojsHx.git
