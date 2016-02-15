@@ -8,11 +8,12 @@
 package demos;
 
 import lib.com.babylonhx.materials.StandardMaterial;
-import lib.com.babylonhx.materials.textures.Texture;
 import lib.com.babylonhx.math.Color3;
 import lib.com.babylonhx.mesh.Mesh;
 
 import lib.com.babylonhx.Scene;
+
+import jmengine.assetmanager.AssetManager;
 
 //----------------------------------------------------------------------------------------------------
 // TerrainAsync Class Definition.
@@ -24,8 +25,8 @@ class TerrainAsync
 		// Ground
 		var groundMaterial = new StandardMaterial( "m_terrain_ground", scene );
 
-		groundMaterial.ambientTexture = new Texture( "assets/terrain/terrain_color.png", scene );
-		groundMaterial.bumpTexture = new Texture( "assets/terrain/terrain_normal.png", scene );
+		groundMaterial.ambientTexture = AssetManager.get_Instance( ).LoadTextureAsync( "assets/terrain/terrain_color.png", scene, 1 );
+		groundMaterial.bumpTexture = AssetManager.get_Instance( ).LoadTextureAsync( "assets/terrain/terrain_normal.png", scene, 1 );
 		groundMaterial.roughness = 0.25;
 		groundMaterial.specularColor = new Color3( 1, 1, 1 );
 		groundMaterial.specularPower = 0.01;
@@ -35,7 +36,4 @@ class TerrainAsync
 
 		scene.addMesh( ground );
 	}
-
-	//------------------------------------------------------------------------------------------------
-	private function _
 }

@@ -21,6 +21,7 @@ import jmengine.app.EntryPoint;
 
 import demos.Demo;
 import demos.Terrain;
+import demos.TerrainAsync;
 
 //------------------------------------------------------------------------------------------------
 // Main class definition.
@@ -52,7 +53,8 @@ class Main extends snow.App
 		var demo = new Demo( entryPoint.jmengine.scene );
 
 		// Various demo modules.
-		var terrain = new Terrain( entryPoint.jmengine.scene );
+//		var terrain = new Terrain( entryPoint.jmengine.scene );
+		var terrainAsync = new TerrainAsync( entryPoint.jmengine.scene );
 	}
 
 	//------------------------------------------------------------------------------------------------
